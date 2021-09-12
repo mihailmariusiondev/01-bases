@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { Personaje } from '../interfaces/dbz.interface';
 
 @Component({
@@ -20,8 +20,14 @@ export class MainPageComponent {
   ]
 
   nuevo: Personaje = {
-    nombre: "",
-    poder: 0
+    nombre: "Maestro Roshi",
+    poder: 1000
+  }
+
+  agregarNuevoPersonaje(argumento: Personaje) {
+    debugger;
+    console.log(argumento);
+    this.personajes.push(argumento)
   }
 
 }
