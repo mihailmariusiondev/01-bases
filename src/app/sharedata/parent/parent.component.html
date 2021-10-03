@@ -1,0 +1,31 @@
+<!-- @Input demo -->
+<h1>Parent to Child One | @Input</h1>
+
+<app-child-one [childOneItem]="papaItem"></app-child-one>
+<button (click)="changeItem()">Change item with an @Input</button>
+<ol>
+  <li>changeItem() is called in parent.component.html</li>
+  <li>Parent changes papaItem variable value</li>
+  <li>Child component recieves updated value</li>
+  <li>Child component shows it on the DOM</li>
+</ol>
+<br>
+<br>
+<hr>
+
+<!-- @Output demo -->
+
+<h1>Child Two to parent | @Output</h1>
+<app-child-two (addItemEvent)="addItem($event)"></app-child-two>
+
+<ul>
+  <li *ngFor="let item of items">{{item}}</li>
+</ul>
+
+<br>
+<br>
+<hr>
+
+<!-- @Input & @Output demo -->
+<h1>Parent to Child Three and Child Three to Parent | @Input & @Output together</h1>
+<app-child-three [childThreeItem]="papaItemTwo" (deleteRequest)="deleteUser()"> </app-child-three>
