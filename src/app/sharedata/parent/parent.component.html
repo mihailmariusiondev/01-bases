@@ -2,30 +2,41 @@
 <h1>Parent to Child One | @Input</h1>
 
 <app-child-one [childOneItem]="papaItem"></app-child-one>
-<button (click)="changeItem()">Change item with an @Input</button>
+<button (click)="changeItem()">Change item with an @Input (parent.component.html)</button>
 <ol>
-  <li>changeItem() is called in parent.component.html</li>
+  <li>changeItem() from parent.component.html is called in button's click  </li>
   <li>Parent changes papaItem variable value</li>
   <li>Child component recieves updated value</li>
   <li>Child component shows it on the DOM</li>
 </ol>
-<br>
-<br>
+
 <hr>
 
 <!-- @Output demo -->
 
 <h1>Child Two to parent | @Output</h1>
+<ol>
+  <li>addItem() is called in button's click child-two.component.html</li>
+  <li>Child emits (EventEmitter) input's value via @Output (addItemEvent)</li>
+  <li>Parent recieves input's value and add's it to the list</li>
+</ol>
 <app-child-two (addItemEvent)="addItem($event)"></app-child-two>
 
 <ul>
+  <p>
+    <span style="font-weight: bold;">parent.component.html items:</span>:
+  </p>
   <li *ngFor="let item of items">{{item}}</li>
 </ul>
 
-<br>
-<br>
 <hr>
 
 <!-- @Input & @Output demo -->
 <h1>Parent to Child Three and Child Three to Parent | @Input & @Output together</h1>
-<app-child-three [childThreeItem]="papaItemTwo" (deleteRequest)="deleteUser()"> </app-child-three>
+<ol>
+  <li>changeItem() is called in button's click parent.component.html </li>
+  <li>Parent changes papaItem variable value</li>
+  <li>Child component recieves updated value</li>
+  <li>Child component shows it on the DOM</li>
+</ol>
+<app-child-three [childThreeItem]="papaItemTwo" (deleteRequest)="deleteItem()"> </app-child-three>
