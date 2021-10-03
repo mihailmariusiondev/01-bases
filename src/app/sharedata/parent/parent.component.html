@@ -1,26 +1,31 @@
-<!-- @Input demo -->
-<h1>Parent to Child One | @Input</h1>
+<a href="https://angular.io/guide/inputs-outputs#sending-data-to-a-parent-component">Agular docs</a><br>
+<a href="https://angular.io/generated/live-examples/inputs-outputs/stackblitz.html">Live example</a>
 
+<!-- @Input demo -->
+<h1>Child component with @Input (parent.component.html ➡ child-one.component.html)</h1>
 <app-child-one [childOneItem]="papaItem"></app-child-one>
-<button (click)="changeItem()">Change item with an @Input (parent.component.html)</button>
 <ol>
-  <li>changeItem() from parent.component.html is called in button's click  </li>
+  <li>Child component recieves value (from parent.component.html)</li>
+</ol>
+
+<hr>
+
+<h1>Change item with @Input (parent.component.html ➡ child-one.component.html)</h1>
+<app-child-one [childOneItem]="papaItem"></app-child-one>
+<button (click)="changeItem()">Change parent's item (from parent)</button>
+
+<ol>
+  <li>changeItem() is called in button's click (parent.component.html)</li>
   <li>Parent changes papaItem variable value</li>
   <li>Child component recieves updated value</li>
-  <li>Child component shows it on the DOM</li>
+  <li>Child component shows updated value on the DOM</li>
 </ol>
 
 <hr>
 
 <!-- @Output demo -->
 
-<h1>Child Two to parent | @Output</h1>
-<ol>
-  <li>addItem() is called in button's click child-two.component.html</li>
-  <li>Child emits (EventEmitter) input's value via @Output (addItemEvent)</li>
-  <li>Parent recieves input's value and add's it to the list</li>
-</ol>
-<app-child-two (addItemEvent)="addItem($event)"></app-child-two>
+<h1>Child component with @Output (child-two.component.html ➡ parent.component.html) </h1>
 
 <ul>
   <p>
@@ -29,11 +34,20 @@
   <li *ngFor="let item of items">{{item}}</li>
 </ul>
 
+<app-child-two (addItemEvent)="addItem($event)"></app-child-two>
+
+<ol>
+  <li>addItem() is called in button's click (child-two.component.html)</li>
+  <li>Child emits via @Output event emitter addItemEvent(), input's value</li>
+  <li>Parent recieves input's value ($event) and adds it to the list in addItem()</li>
+</ol>
+
 <hr>
 
 <!-- @Input & @Output demo -->
-<h1>Parent to Child Three and Child Three to Parent | @Input & @Output together</h1>
+<h1>Input and Output together (child-three.component.html ↔ parent.component.html) </h1>
 <ol>
+  <li>Child component recieves value (from parent.component.html)</li>
   <li>changeItem() is called in button's click parent.component.html </li>
   <li>Parent changes papaItem variable value</li>
   <li>Child component recieves updated value</li>
